@@ -1,13 +1,13 @@
 package com.example.tics;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Successs extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Success extends AppCompatActivity {
     private Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public class Successs extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Successs.this, sign_in.class);
+                Intent intent=new Intent(Success.this, sign_in.class);
                 startActivity(intent);
             }
         });

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.tics">
+    <uses-permission-sdk-23 android:name="android.permission.INTERNET"></uses-permission-sdk-23>
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -21,13 +23,13 @@
         </activity>
         <activity
             android:name=".sign_up"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Successs"
+            android:name=".Success"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -35,27 +37,28 @@
         </activity>
         <activity
             android:name=".sign_in"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_sign_up"
             android:theme="@style/Theme.Tics.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Start_screen"
-            android:exported="true"
+            android:exported="false"
             android:parentActivityName=".Start_screen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
     </application>
 
 </manifest>

@@ -39,13 +39,25 @@ public class sign_up extends AppCompatActivity {
         editTextUsername.addTextChangedListener(input_watcher);
         editTextPassword.addTextChangedListener(input_watcher);
 
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        gt_success();
-                    }
-                });
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = editTextUsername.getText().toString();
+                String password = editTextPassword.getText().toString();
+                String url = "http://192.168.31.243/insertData.php";
+                String type = "sign_up";
+                BackgroundWorker backgroundWorker = new BackgroundWorker(sign_up.this);
+                backgroundWorker.execute(url, type, username, password);
+                gt_success();
+            }
+        });
     }
+
+    private void gt_success() {
+        Intent intent = new Intent(sign_up.this, Success.class);
+        startActivity(intent);
+    }
+
     private TextWatcher input_watcher=new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
@@ -65,12 +77,4 @@ public class sign_up extends AppCompatActivity {
 
         }
     };
-    public void gt_success(){
-        String name =editTextUsername.getText().toString();
-        String pswd =editTextPassword.getText().toString();
-        Intent intent = new Intent(sign_up.this, Successs.class);
-        intent.putExtra(EXTRA_NAME,name);
-        intent.putExtra(EXTRA_PSWD,pswd);
-        startActivity(intent);
-    }
 }

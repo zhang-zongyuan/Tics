@@ -71,4 +71,21 @@
         android:layout_below="@id/loginbtn"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"/>
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/error_while_logging_in"
+        android:textColor="#F44336"
+        android:layout_below="@id/password"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        />
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
     </RelativeLayout>
