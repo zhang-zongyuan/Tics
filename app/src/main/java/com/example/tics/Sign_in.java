@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,7 +26,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class sign_in extends AppCompatActivity {
+public class Sign_in extends AppCompatActivity {
     Button button;
     EditText editTextUsername;
     EditText editTextPassword;
@@ -52,12 +51,12 @@ public class sign_in extends AppCompatActivity {
         progressBar = findViewById(R.id.loading);
 
         sharedPreferences = getSharedPreferences("tics", MODE_PRIVATE);
-
-        if (sharedPreferences.getString("logged", "false").equals("true")) {
-            Intent intent = new Intent(getApplicationContext(), Sign_up_profile.class);
-            startActivity(intent);
-            finish();
-        }
+//
+//        if (sharedPreferences.getString("logged", "false").equals("true")) {
+//            Intent intent = new Intent(getApplicationContext(), Sign_up_profile.class);
+//            startActivity(intent);
+//            finish();
+//        }
 
         //admin and admin
 
@@ -70,7 +69,8 @@ public class sign_in extends AppCompatActivity {
                 username = String.valueOf(editTextUsername.getText());
                 password = String.valueOf(editTextPassword.getText());
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = "http://192.168.31.243/fetchData.php";
+//                String url = "http://192.168.31.243/fetchData.php";
+                String url = "http://192.168.154.166/fetchData.php";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                         new Response.Listener<String>() {
                             @Override
@@ -88,8 +88,24 @@ public class sign_in extends AppCompatActivity {
                                         editor.putString("TeacherName", username);
                                         editor.putString("apikey", apikey);
                                         editor.apply();
-                                        Intent intent = new Intent(getApplicationContext(), Sign_up_profile.class);
-                                        startActivity(intent);
+//                                      Intent intent = new Intent(getApplicationContext(), Sign_up_profile.class);
+                                        Intent senderIntent= new Intent(getApplicationContext(), Sign_up_profile.class);
+                                        senderIntent.putExtra("KEY_SENDER",username);
+                                        startActivity(senderIntent);
+//                                      startActivity(intent);
+                                        finish();
+                                    }
+                                    else if (status.equals("relogin")) {
+                                        username = jsonObject.getString("TeacherName");
+                                        apikey = jsonObject.getString("apikey");
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("logged", "true");
+                                        editor.putString("TeacherName", username);
+                                        editor.putString("apikey", apikey);
+                                        editor.apply();
+                                        Intent senderIntent= new Intent(getApplicationContext(), Menu.class);
+                                        senderIntent.putExtra("KEY_SENDER",username);
+                                        startActivity(senderIntent);
                                         finish();
                                     }
                                 } catch (JSONException e) {
@@ -114,6 +130,7 @@ public class sign_in extends AppCompatActivity {
             }
         });
     }
+
     private TextWatcher input_watcher=new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {

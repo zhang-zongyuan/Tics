@@ -17,7 +17,7 @@
         android:background="#eee"
         app:shapeAppearanceOverlay="@style/img_style"/>
 
-    <EditText
+    <TextView
         android:id="@+id/username2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,13 +29,13 @@
         android:background="#50ffffff"
         android:drawableLeft="@drawable/ic_baseline_person_outline_24"
         android:drawablePadding="20dp"
-        android:hint="Username"
+        android:hint="name"
         android:padding="20dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black" />
 
     <EditText
-        android:id="@+id/firstname"
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/username2"
@@ -46,24 +46,7 @@
         android:background="#50ffffff"
         android:drawableLeft="@drawable/ic_baseline_person_outline_24"
         android:drawablePadding="20dp"
-        android:hint="first name"
-        android:padding="20dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black" />
-
-    <EditText
-        android:id="@+id/lastname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/firstname"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#50ffffff"
-        android:drawableLeft="@drawable/ic_baseline_person_outline_24"
-        android:drawablePadding="20dp"
-        android:hint="last name"
+        android:hint="email"
         android:padding="20dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black" />
@@ -72,10 +55,22 @@
         android:id="@+id/school_list"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_below="@id/lastname"
+        android:layout_below="@id/email"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@android:drawable/btn_dropdown" />
+
+    <Spinner
+        android:id="@+id/class_list"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/school_list"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="21dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:background="@android:drawable/btn_dropdown" />
@@ -84,15 +79,15 @@
         android:id="@+id/completebtn"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/school_list"
+        android:layout_below="@+id/class_list"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="23dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="#40adbdfa"
         android:text="complete"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black" />
 
     <TextView
         android:layout_width="wrap_content"

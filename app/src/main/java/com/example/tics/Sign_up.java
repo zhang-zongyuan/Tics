@@ -3,9 +3,7 @@ package com.example.tics;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.snackbar.Snackbar;
-
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
@@ -14,16 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.tics.databinding.ActivitySignUpBinding;
-
-public class sign_up extends AppCompatActivity {
-    public static final String EXTRA_NAME="name";
-    public static final String EXTRA_PSWD="pswd";
+public class Sign_up extends AppCompatActivity {
+//    public static final String EXTRA_NAME="name";
+//    public static final String EXTRA_PSWD="pswd";
     private Button button;
     private EditText editTextUsername;
     private EditText editTextPassword;
@@ -44,17 +35,20 @@ public class sign_up extends AppCompatActivity {
             public void onClick(View v) {
                 String username = editTextUsername.getText().toString();
                 String password = editTextPassword.getText().toString();
+                String email= "";
+                String schName= "";
+                String classID= "";
                 String url = "http://192.168.31.243/insertData.php";
                 String type = "sign_up";
-                BackgroundWorker backgroundWorker = new BackgroundWorker(sign_up.this);
-                backgroundWorker.execute(url, type, username, password);
+                BackgroundWorker backgroundWorker = new BackgroundWorker(Sign_up.this);
+                backgroundWorker.execute(url, type, username, password,email,schName,classID);
                 gt_success();
             }
         });
     }
 
     private void gt_success() {
-        Intent intent = new Intent(sign_up.this, Success.class);
+        Intent intent = new Intent(Sign_up.this, Success.class);
         startActivity(intent);
     }
 

@@ -12,12 +12,12 @@ public class Success extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_successs);
+        setContentView(R.layout.activity_success);
         button =(Button) findViewById(R.id.go_signinbtn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Success.this, sign_in.class);
+                Intent intent=new Intent(Success.this, Sign_in.class);
                 startActivity(intent);
             }
         });

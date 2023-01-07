@@ -30,12 +30,12 @@ public class Start_screen extends AppCompatActivity {
         });
     }
     public void opensignup() {
-        Intent intent = new Intent(Start_screen.this, sign_up.class);
+        Intent intent = new Intent(Start_screen.this, Sign_up.class);
         startActivity(intent);
     }
 
     public void opensignin(){
-        Intent intent = new Intent(Start_screen.this, sign_in.class);
+        Intent intent = new Intent(Start_screen.this, Sign_in.class);
         startActivity(intent);
     }
 }
